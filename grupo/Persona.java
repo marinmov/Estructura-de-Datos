@@ -65,7 +65,6 @@ public class Persona {
     }
 
     public String toString(){
-        
         return "Nombre: " + nombre
             +"\nNumero de control: " + numControl
             +"\nFecha de Nacimiento: " + fecha
@@ -73,7 +72,6 @@ public class Persona {
             +"\nEstatura en mts: " + estatura + "m";
     }
     
-
     public String getNombre(){return nombre;}
     public String getNControl(){return numControl;}
     public String getFechaN() { return fecha; } 
