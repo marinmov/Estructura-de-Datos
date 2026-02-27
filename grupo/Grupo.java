@@ -134,10 +134,10 @@ public class Grupo {
     //2. DATA -> ENTRADA (registro de datos por lectura de archivo)
     void archivo(String archivoNombre){
         try (BufferedReader br = new BufferedReader(new FileReader(archivoNombre))) {
-            String line;
+            String line; 
+            JOptionPane.showMessageDialog(null, "Leyendo de archivo...");
             while ((line = br.readLine()) != null && getCuenta()<grupo.length){
                 String[] datos = line.split(",");
-                JOptionPane.showMessageDialog(null, "Leyendo de archivo...");
                 if (datos.length == 5){
                     String nombre = datos[0].trim();
                     String numControl = datos[1].trim();
