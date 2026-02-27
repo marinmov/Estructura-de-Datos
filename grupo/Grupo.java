@@ -233,7 +233,7 @@ public class Grupo {
         while(sw != -1 && sw != 4){
             switch (sw) {
                 case 0: mn.entrada(); break;
-                case 1: mn.archivo("C:\\Users\\marle\\Documents\\Estructura de Datos\\grupo\\Personas.txt"); break;
+                case 1: mn.archivo("grupo/Personas.txt"); break;
                 case 2: mn.buscar(); break;
                 case 3: mn.imprimir(); break;
             }
