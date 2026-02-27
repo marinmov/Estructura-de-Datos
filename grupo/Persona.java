@@ -5,22 +5,25 @@ public class Persona {
     private String numControl;
     private String fecha;
     private double peso, estatura;
+    private int numLista;
     private int cuenta;
 
     public Persona(){
         this.nombre = "";
         this.numControl = "";
+        this.numLista = 0;
         this.fecha = "";
         this.peso = 0.0;
         this.estatura = 0.0;    
     }
 
-    public Persona(String nombre, String numControl, String fecha, double peso, double estatura){
+    public Persona(String nombre, String numControl, String fecha, double peso, double estatura, int numLista){
         this.nombre = nombre;
         this.numControl = numControl;
         this.fecha = fecha;
         this.peso = peso;
         this.estatura = estatura;
+        this.numLista = numLista;
     }
 
     public boolean setNombre(String nombre){
@@ -36,6 +39,14 @@ public class Persona {
             return false;
         } else{
             this.numControl = numControl;
+            return true;
+        }
+    }
+    public boolean setNLista(int numLista){
+        if(numLista <=0){
+            return false;
+        } else{
+            this.numLista = numLista;
             return true;
         }
     }
@@ -67,6 +78,7 @@ public class Persona {
     public String toString(){
         return "Nombre: " + nombre
             +"\nNumero de control: " + numControl
+            + "\nNumero de lista: " + numLista
             +"\nFecha de Nacimiento: " + fecha
             +"\nPeso en Kg: " + peso + "kg"
             +"\nEstatura en mts: " + estatura + "m";
@@ -74,8 +86,8 @@ public class Persona {
     
     public String getNombre(){return nombre;}
     public String getNControl(){return numControl;}
-    public String getFechaN() { return fecha; } 
-    public void setFechaN(String fecha) { this.fecha = fecha; }
+    public String getFechaN() { return fecha;} 
+    public int getNLista(){return numLista;}
     public double getPeso(){return peso;}
     public double getEstatura(){return estatura;}
 }

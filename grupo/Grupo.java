@@ -66,13 +66,25 @@ public class Grupo {
         while(cuenta<grupo.length && getStop()!=1){
             grupo[cuenta] = new Persona();
             String nombre, numControl;
-            
+            int numLista;
             double estatura, peso;
             correct = false; 
             while(!correct){
                 nombre = JOptionPane.showInputDialog("Deme el nombre de la persona " + (cuenta+1)); 
                 correct = grupo[cuenta].setNombre(nombre);
                 if(!correct){
+                    JOptionPane.showMessageDialog(null, "Campo OBLIGATORIO!", 
+                    "ATENCION", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+            correct = false;
+            while(!correct){
+                try {
+                    numLista = Integer.parseInt(JOptionPane.showInputDialog("Deme el numero de lista de la persona " 
+                            + (cuenta+1)));  
+                    correct = grupo[cuenta].setNLista(numLista);
+                } catch (NumberFormatException e) {
+                    correct = false;
                     JOptionPane.showMessageDialog(null, "Campo OBLIGATORIO!", 
                     "ATENCION", JOptionPane.WARNING_MESSAGE);
                 }
@@ -144,7 +156,8 @@ public class Grupo {
                     String fecha = datos[2].trim();
                     double peso = Double.parseDouble(datos[3].trim());
                     double estatura = Double.parseDouble(datos[4].trim());
-                    grupo[cuenta] = new Persona(nombre, numControl, fecha, peso, estatura);
+                    int numLista = Integer.parseInt(datos[5].trim());
+                    grupo[cuenta] = new Persona(nombre, numControl, fecha, peso, estatura, numLista);
                     cuenta++;
                 }
                 else {
@@ -233,7 +246,7 @@ public class Grupo {
         while(sw != -1 && sw != 4){
             switch (sw) {
                 case 0: mn.entrada(); break;
-                case 1: mn.archivo("C:\\Users\\marle\\Documents\\Estructura de Datos\\grupo\\Personas.txt"); break;
+                case 1: mn.archivo("Personas.txt"); break;
                 case 2: mn.buscar(); break;
                 case 3: mn.imprimir(); break;
             }
