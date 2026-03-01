@@ -33,10 +33,14 @@ public class Persona {
     }
 
     public boolean setNombre(String nombre){
-        if(nombre == null || nombre.isEmpty() || nombre.isBlank()){
+        if(nombre == null || nombre.trim().isEmpty() || nombre.isBlank()){
             return false;
+        } else if(!nombre.matches("[A-Za-zÁÉÍÓÚáéíóúñÑ ]+")){
+            return false;
+        } else if(nombre.length() < 2 || nombre.length() > 50){ 
+            return false; 
         } else{
-            this.nombre = nombre;
+            this.nombre = nombre.trim();
             return true;
         }
     }
@@ -75,17 +79,17 @@ public class Persona {
     }
     public String toString(){
         if(fechaString.isEmpty() || fechaString.isBlank()){
-            return "Nombre: " + nombre
-                + "\nNumero de control: " + numControl
-                + "\nFecha de Nacimiento: " + fecha.getStringDate(fecha.slashNumericFormat())
-                + "\nPeso en Kg: " + peso + "kg"
-                + "\nEstatura en mts: " + estatura + "m";
+            return "\tNombre: " + nombre
+                + "\n\tNumero de control: " + numControl
+                + "\n\tFecha de Nacimiento: " + fecha.getStringDate(fecha.slashNumericFormat())
+                + "\n\tPeso en Kg: " + peso + "kg"
+                + "\n\tEstatura en mts: " + estatura + "m";
         } else {
-            return "Nombre: " + nombre
-                + "\nNumero de control: " + numControl
-                + "\nFecha de Nacimiento: " + fechaString
-                + "\nPeso en Kg: " + peso + "kg"
-                + "\nEstatura en mts: " + estatura + "m";
+            return "\tNombre: " + nombre
+                + "\n\tNumero de control: " + numControl
+                + "\n\tFecha de Nacimiento: " + fechaString
+                + "\n\tPeso en Kg: " + peso + "kg"
+                + "\n\tEstatura en mts: " + estatura + "m";
         }
     }
 
