@@ -9,7 +9,7 @@ Horario:
     Viernes de 8:45 a 9:35
 Alumno: Marlene Ines Moreno Velazquez
 Tarea #3
-Fecha: 25 de febrero de 2026
+Fecha: 25 de febrero de 2026*
 
 ----- ALGORITMO SECUENCIAL -----
 1. Meta: Mediante el programa se capturaran los datos de 25 personas (o menos)
@@ -217,13 +217,15 @@ public class Grupo {
         }
         int i = 0; String resultado ="";
         while(i<getCuenta()){
-            resultado += "Persona " + (i+1)
-                    + "\n" + grupo[i].toString() + "\n";
+            resultado += "\nPersona " + (i+1) + "\n" 
+                    + grupo[i].toString();
             i++;
         }
-        JOptionPane.showMessageDialog(null, resultado,
-                "LISTA DE TODAS LAS PERSONAS REGISTRADAS", JOptionPane.INFORMATION_MESSAGE);
-
+        System.out.println("----- LISTA DE TODAS LAS PERSONAS REGISTRADAS -----");
+        System.out.println(resultado);
+        JOptionPane.showMessageDialog(null, "Revise la lista en terminal de ejecucion.", "IMPRESION COMPLETA", JOptionPane.PLAIN_MESSAGE);
+        //JOptionPane.showMessageDialog(null, resultado,
+        //        "LISTA DE TODAS LAS PERSONAS REGISTRADAS", JOptionPane.INFORMATION_MESSAGE);
     }
     //5. NAVEGABILIDAD -> Menu (solicitar al usuario seleccionar la accion deseada)
     int menu(){
@@ -276,3 +278,4 @@ public class Grupo {
     void setStop(int stop){this.stop = stop;}
     int getStop(){return stop;}
 } 
+
