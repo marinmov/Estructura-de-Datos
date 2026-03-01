@@ -3,22 +3,31 @@ package grupo;
 public class Persona {
     private String nombre;
     private String numControl;
-    private String fecha;
+    private DayArslan fecha;
+    private String fechaString = "";
     private double peso, estatura;
-    private int cuenta;
 
     public Persona(){
         this.nombre = "";
         this.numControl = "";
-        this.fecha = "";
+        this.fecha = null;
         this.peso = 0.0;
         this.estatura = 0.0;    
+    }
+
+    public Persona(String nombre, String numControl, 
+        DayArslan fecha, double peso, double estatura){
+        this.nombre = nombre;
+        this.numControl = numControl;
+        this.fecha = fecha;
+        this.peso = peso;
+        this.estatura = estatura;
     }
 
     public Persona(String nombre, String numControl, String fecha, double peso, double estatura){
         this.nombre = nombre;
         this.numControl = numControl;
-        this.fecha = fecha;
+        this.fechaString = fecha;
         this.peso = peso;
         this.estatura = estatura;
     }
@@ -39,11 +48,12 @@ public class Persona {
             return true;
         }
     }
-    public boolean setFecha(String fecha){
-        if(fecha == null || fecha.isEmpty() || fecha.isBlank()){
+    public boolean setFecha(int dd, int mm, int yyyy){
+        DayArslan temp = new DayArslan(dd, mm, yyyy);
+        if (!temp.isValidDay(dd, mm, yyyy)) {
             return false;
-        } else{
-            this.fecha = fecha;
+        } else {
+            this.fecha = temp;
             return true;
         }
     }
@@ -63,19 +73,34 @@ public class Persona {
             return true;
         }
     }
-
     public String toString(){
-        return "Nombre: " + nombre
-            +"\nNumero de control: " + numControl
-            +"\nFecha de Nacimiento: " + fecha
-            +"\nPeso en Kg: " + peso + "kg"
-            +"\nEstatura en mts: " + estatura + "m";
+        if(fechaString.isEmpty() || fechaString.isBlank()){
+            return "Nombre: " + nombre
+                + "\nNumero de control: " + numControl
+                + "\nFecha de Nacimiento: " + fecha.getStringDate(fecha.slashNumericFormat())
+                + "\nPeso en Kg: " + peso + "kg"
+                + "\nEstatura en mts: " + estatura + "m";
+        } else {
+            return "Nombre: " + nombre
+                + "\nNumero de control: " + numControl
+                + "\nFecha de Nacimiento: " + fechaString
+                + "\nPeso en Kg: " + peso + "kg"
+                + "\nEstatura en mts: " + estatura + "m";
+        }
     }
-    
+
     public String getNombre(){return nombre;}
     public String getNControl(){return numControl;}
-    public String getFechaN() { return fecha; } 
-    public void setFechaN(String fecha) { this.fecha = fecha; }
+    public String getFechaN() { return fecha.getStringDate(fecha.slashNumericFormat()); } 
+    //public void setFechaN(String fecha) { this.fecha = fecha; }
     public double getPeso(){return peso;}
     public double getEstatura(){return estatura;}
+
+    public DayArslan getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(DayArslan fecha) {
+        this.fecha = fecha;
+    }
 }
